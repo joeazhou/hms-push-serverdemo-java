@@ -15,6 +15,8 @@
  */
 package com.huawei.push.examples;
 
+import java.util.ResourceBundle;
+
 import com.alibaba.fastjson.JSONObject;
 import com.huawei.push.android.AndroidNotification;
 import com.huawei.push.android.BadgeNotification;
@@ -44,13 +46,13 @@ public class SendNotifyMessage {
         HuaweiApp app = InitAppUtils.initializeApp();
         HuaweiMessaging huaweiMessaging = HuaweiMessaging.getInstance(app);
 
-        Notification notification = Notification.builder().setTitle("sample title")
+        Notification notification = Notification.builder().setTitle("Joseph News")
                 .setBody("sample message body")
                 .build();
 
         JSONObject multiLangKey = new JSONObject();
         JSONObject titleKey = new JSONObject();
-        titleKey.put("en","好友请求");
+        titleKey.put("en","å¥½å�‹è¯·æ±‚");
         JSONObject bodyKey = new JSONObject();
         titleKey.put("en","My name is %s, I am from %s.");
         multiLangKey.put("key1", titleKey);
@@ -72,7 +74,7 @@ public class SendNotifyMessage {
                 .setTitleLocKey("M.String.title")
                 .addTitleLocArgs("Girl").addTitleLocArgs("Cat")
                 .setChannelId("Your Channel ID")
-                .setNotifySummary("some summary")
+                .setNotifySummary("some summary from joseph")
                 .setMultiLangkey(multiLangKey)
                 .setStyle(1)
                 .setBigTitle("Big Boom Title")
@@ -98,9 +100,12 @@ public class SendNotifyMessage {
                 .setNotification(androidNotification)
                 .build();
 
+        String device_push_token = ResourceBundle.getBundle("url").getString("device_push_token");
+        String token = device_push_token;
+        
         Message message = Message.builder().setNotification(notification)
                 .setAndroidConfig(androidConfig)
-                .addToken("AND8rUp4etqJvbakK7qQoCVgFHnROXzH8o7B8fTl9rMP5VRFN83zU3Nvmabm3xw7e3gZjyBbp_wfO1jP-UyDQcZN_CtjBpoa7nx1WaVFe_3mqXMJ6nXJNUZcDyO_-k3sSw")
+                .addToken(token)
                 .build();
 
         SendResponse response = huaweiMessaging.sendMessage(message);

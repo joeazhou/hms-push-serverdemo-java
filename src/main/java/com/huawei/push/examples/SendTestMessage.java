@@ -34,6 +34,7 @@ import com.huawei.push.reponse.SendResponse;
 import com.huawei.push.util.InitAppUtils;
 
 public class SendTestMessage {
+	
     public void sendTestMessage() throws HuaweiMesssagingException {
         HuaweiApp app = InitAppUtils.initializeApp();
         HuaweiMessaging huaweiMessaging = HuaweiMessaging.getInstance(app);
@@ -44,7 +45,7 @@ public class SendTestMessage {
 
         JSONObject multiLangKey = new JSONObject();
         JSONObject titleKey = new JSONObject();
-        titleKey.put("en","好友请求");
+        titleKey.put("en","å¥½å�‹è¯·æ±‚");
         JSONObject bodyKey = new JSONObject();
         titleKey.put("en","My name is %s, I am from %s.");
         multiLangKey.put("key1", titleKey);
@@ -90,7 +91,7 @@ public class SendTestMessage {
 
         Message message = Message.builder().setNotification(notification)
                 .setAndroidConfig(androidConfig)
-                .addToken("AND8rUp4etqJvbakK7qQoCVgFHnROXzH8o7B8fTl9rMP5VRFN83zU3Nvmabm3xw7e3gZjyBbp_wfO1jP-UyDQcZN_CtjBpoa7nx1WaVFe_3mqXMJ6nXJNUZcDyO_-k3sSw")
+                .addToken("AFBbYPZ4EtF7dNt5QkcWJDBZMGbEWsSF4tC_URbZPngu8_3FOGmVAP78axbLftCT9qhZCYb3mwlFFHa5ToDWn4RM908ZQXAYHOvsC9GYKhl_Y-iYNJW950UWM4FfnMQuHA")
                 .build();
 
         SendResponse response = huaweiMessaging.sendMessage(message, true);

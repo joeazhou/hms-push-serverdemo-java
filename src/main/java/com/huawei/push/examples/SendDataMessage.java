@@ -15,6 +15,8 @@
  */
 package com.huawei.push.examples;
 
+import java.util.ResourceBundle;
+
 import com.huawei.push.exception.HuaweiMesssagingException;
 import com.huawei.push.message.AndroidConfig;
 import com.huawei.push.message.Message;
@@ -40,10 +42,11 @@ public class SendDataMessage {
                 .setBiTag("the_sample_bi_tag_for_receipt_service")
                 .build();
 
-        String token = "AND8rUp4etqJvbakK7qQoCVgFHnROXzH8o7B8fTl9rMP5VRFN83zU3Nvmabm3xw7e3gZjyBbp_wfO1jP-UyDQcZN_CtjBpoa7nx1WaVFe_3mqXMJ6nXJNUZcDyO_-k3sSw";
-
+        String device_push_token = ResourceBundle.getBundle("url").getString("device_push_token");
+        String token = device_push_token;
+        
         Message message = Message.builder()
-                .setData("{'k1':'v1', 'k2':'v2'}")
+                .setData("{'k1':'zhou', 'k2':'joseh'}")
                 .setAndroidConfig(androidConfig)
                 .addToken(token)
                 .build();
